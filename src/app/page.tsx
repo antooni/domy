@@ -111,9 +111,9 @@ export default function Home() {
           fill
           priority
           sizes="100vw"
-          className="object-cover"
+          className="object-cover blur-sm opacity-80 scale-105"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-[oklch(0.15_0.02_145/0.2)] via-[oklch(0.15_0.02_145/0.35)] to-[oklch(0.15_0.02_145/0.75)]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[oklch(0.15_0.02_145/0.35)] via-[oklch(0.15_0.02_145/0.5)] to-[oklch(0.15_0.02_145/0.85)]" />
 
         <div className="relative z-10 min-h-screen flex flex-col justify-end px-6 md:px-10 lg:px-16 pt-24 pb-20 md:pb-28 max-w-[1400px] mx-auto">
           <div className="max-w-5xl reveal reveal-1">
