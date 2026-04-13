@@ -13,6 +13,16 @@ import {
   BadgeCheck,
   Eye,
   Heart,
+  Users,
+  MapPin,
+  FileText,
+  TreePine,
+  Ruler,
+  Package,
+  Hammer,
+  Home as HomeIcon,
+  Shield,
+  Paintbrush,
   type LucideIcon,
 } from "lucide-react";
 import { content, type Locale } from "@/lib/content";
@@ -22,6 +32,12 @@ const GALLERY_IMAGES = ["/gallery-1.jpg", "/gallery-2.jpg", "/gallery-3.jpg"];
 const BENEFIT_ICONS: LucideIcon[] = [Zap, Leaf, Flame];
 const PROCESS_ICONS: LucideIcon[] = [PenTool, Factory, Blocks, Key];
 const VALUE_ICONS: LucideIcon[] = [BadgeCheck, Eye, Heart];
+const STEP_DETAIL_ICONS: LucideIcon[][] = [
+  [Users, MapPin, FileText],
+  [TreePine, Ruler, Package],
+  [Hammer, Blocks, HomeIcon],
+  [Zap, Shield, Paintbrush],
+];
 
 function SectionLabel({ title }: { title: string }) {
   return (
@@ -36,6 +52,7 @@ function SectionLabel({ title }: { title: string }) {
 
 export default function Home() {
   const [locale, setLocale] = useState<Locale>("pl");
+  const [activeStep, setActiveStep] = useState(0);
   const t = content[locale];
 
   const heroTitle =
@@ -208,26 +225,67 @@ export default function Home() {
       <section id="process" className="py-32 md:py-44 px-6 md:px-10 lg:px-16">
         <div className="max-w-[1400px] mx-auto">
           <SectionLabel title={t.nav.process} />
-          <div className="mt-12 grid md:grid-cols-12 gap-8 items-end">
-            <h2 className="md:col-span-8 font-display font-light text-[clamp(2.5rem,6vw,5.5rem)] leading-[0.94] tracking-[-0.02em]">
-              {t.process.heading}
-            </h2>
-            <p className="md:col-span-4 text-base md:text-lg text-ink-2 leading-relaxed md:pb-4">
-              {t.process.subheading}
-            </p>
+          <h2 className="font-display font-light text-[clamp(2.5rem,6vw,5.5rem)] leading-[0.94] tracking-[-0.02em] mt-12 max-w-5xl">
+            {t.process.heading}
+          </h2>
+
+          <div className="mt-20 md:mt-28 grid md:grid-cols-12 gap-10 md:gap-16">
+            <nav className="md:col-span-3">
+              <div className="flex md:flex-col gap-1 overflow-x-auto md:overflow-visible md:border-l md:border-rule pb-2 md:pb-0 -mb-px md:mb-0">
+                {t.process.steps.map((step, i) => (
+                  <button
+                    key={i}
+                    onClick={() => setActiveStep(i)}
+                    className={`flex items-baseline gap-3 whitespace-nowrap md:whitespace-normal text-left md:pl-6 md:pr-4 px-4 py-3 md:-ml-px md:border-l-2 border-b-2 md:border-b-0 transition-all duration-300 ${
+                      activeStep === i
+                        ? "md:border-l-ink border-b-ink md:border-b-transparent text-ink"
+                        : "md:border-l-transparent border-b-transparent text-ink-3 hover:text-ink-2"
+                    }`}
+                  >
+                    <span className="text-[11px] font-medium tabular-nums tracking-wide">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <span className="font-display font-light text-base md:text-lg">
+                      {step.title}
+                    </span>
+                  </button>
+                ))}
+              </div>
+            </nav>
+
+            <div className="md:col-span-8 md:col-start-5">
+              <h3 className="font-display font-light text-[clamp(2rem,4vw,3.5rem)] leading-[1.05] tracking-[-0.02em]">
+                {t.process.steps[activeStep].headline}
+              </h3>
+
+              <div className="mt-10 grid gap-3 max-w-md">
+                {t.process.steps[activeStep].details.map((detail, i) => {
+                  const DetailIcon = STEP_DETAIL_ICONS[activeStep][i];
+                  return (
+                    <div
+                      key={`${activeStep}-${i}`}
+                      className="flex items-start gap-4 rounded-2xl border border-rule/60 bg-white/60 px-5 py-4 shadow-[0_1px_3px_oklch(0_0_0/0.04)]"
+                    >
+                      <DetailIcon
+                        className="w-5 h-5 text-ink-3 mt-0.5 flex-shrink-0"
+                        strokeWidth={1.5}
+                      />
+                      <div>
+                        <span className="font-display font-light text-base">
+                          {detail.label}
+                        </span>
+                        <p className="text-sm text-ink-3 mt-0.5">{detail.info}</p>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+
+              <p className="mt-10 text-base md:text-lg text-ink-2 leading-[1.7] max-w-lg">
+                {t.process.steps[activeStep].body}
+              </p>
+            </div>
           </div>
-          <ol className="mt-24 md:mt-28 grid gap-16 md:grid-cols-4 md:gap-10">
-            {t.process.steps.map((step, i) => {
-              const Icon = PROCESS_ICONS[i];
-              return (
-                <li key={i} className="relative md:border-t md:border-rule md:pt-10">
-                  <Icon className="w-8 h-8 text-ink" strokeWidth={1.3} />
-                  <h3 className="font-display font-light text-2xl mt-8">{step.title}</h3>
-                  <p className="mt-4 text-base text-ink-2 leading-relaxed">{step.body}</p>
-                </li>
-              );
-            })}
-          </ol>
         </div>
       </section>
 

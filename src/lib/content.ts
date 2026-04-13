@@ -44,19 +44,43 @@ export const content = {
       steps: [
         {
           title: "Projekt i planowanie",
+          headline: "Wszystko zaczyna się od planu.",
           body: "Wspólnie ustalamy koncepcję, dostosowujemy gotowy projekt do Twojej działki i potrzeb lub przygotowujemy indywidualne rozwiązanie.",
+          details: [
+            { label: "Konsultacja wstępna", info: "indywidualny brief i analiza potrzeb" },
+            { label: "Adaptacja projektu", info: "dostosowanie do działki i wymagań" },
+            { label: "Dokumentacja", info: "pozwolenia i formalności budowlane" },
+          ],
         },
         {
           title: "Prefabrykacja",
+          headline: "Precyzja do milimetra.",
           body: "Elementy HBE produkowane są w fabryce z milimetrową precyzją. Każdy bal jest ponumerowany i gotowy do montażu.",
+          details: [
+            { label: "Certyfikowane drewno", info: "klejone warstwowo z kontrolowanych źródeł" },
+            { label: "Obróbka CNC", info: "każdy element z milimetrową dokładnością" },
+            { label: "Numeracja i pakowanie", info: "gotowe zestawy do montażu na budowie" },
+          ],
         },
         {
           title: "Montaż",
+          headline: "Dom stoi w kilka dni.",
           body: "Błyskawiczny montaż na miejscu — ściany stoją w kilka dni, dach zamyka się w tygodnie, nie miesiące.",
+          details: [
+            { label: "Przygotowanie terenu", info: "fundamenty i podwaliny" },
+            { label: "Montaż ścian HBE", info: "pionowe bale łączone na pióro-wpust" },
+            { label: "Zamknięcie bryły", info: "dach i stolarka w tygodnie" },
+          ],
         },
         {
           title: "Wykończenie",
+          headline: "Wchodzisz do gotowego domu.",
           body: "Instalacje, izolacja, wnętrza. Wchodzisz do gotowego domu z naturalnym, drewnianym charakterem.",
+          details: [
+            { label: "Instalacje", info: "elektryka, hydraulika, ogrzewanie" },
+            { label: "Izolacja i elewacja", info: "wełna drzewna i naturalne wykończenie" },
+            { label: "Aranżacja wnętrz", info: "drewniany charakter na każdym kroku" },
+          ],
         },
       ],
     },
@@ -172,19 +196,43 @@ export const content = {
       steps: [
         {
           title: "Design & Planning",
+          headline: "Everything starts with a plan.",
           body: "Together we establish the concept, adapt a ready project to your plot and needs, or prepare a custom solution.",
+          details: [
+            { label: "Initial consultation", info: "individual brief and needs analysis" },
+            { label: "Design adaptation", info: "tailored to your plot and requirements" },
+            { label: "Documentation", info: "building permits and formalities" },
+          ],
         },
         {
           title: "Prefabrication",
+          headline: "Precision to the millimetre.",
           body: "HBE elements are produced in the factory with millimetre precision. Every log is numbered and ready to assemble.",
+          details: [
+            { label: "Certified timber", info: "glued laminated from controlled sources" },
+            { label: "CNC machining", info: "every element cut with millimetre accuracy" },
+            { label: "Numbering & packaging", info: "ready-made kits for on-site assembly" },
+          ],
         },
         {
           title: "Assembly",
+          headline: "Your home stands in days.",
           body: "Lightning-fast on-site assembly — walls stand in days, the roof closes in weeks, not months.",
+          details: [
+            { label: "Site preparation", info: "foundations and base plates" },
+            { label: "HBE wall assembly", info: "vertical logs joined tongue-and-groove" },
+            { label: "Shell completion", info: "roof and joinery in weeks" },
+          ],
         },
         {
           title: "Finishing",
+          headline: "Move into a finished home.",
           body: "Installations, insulation, interiors. You move into a finished home with a natural, wooden character.",
+          details: [
+            { label: "Installations", info: "electrical, plumbing, heating" },
+            { label: "Insulation & façade", info: "wood wool and natural finish" },
+            { label: "Interior design", info: "wooden character at every step" },
+          ],
         },
       ],
     },
