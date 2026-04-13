@@ -28,6 +28,13 @@ import {
 import { content, type Locale } from "@/lib/content";
 
 const GALLERY_IMAGES = ["/gallery-1.jpg", "/gallery-2.jpg", "/gallery-3.jpg"];
+const BENEFIT_IMAGES = ["/benefit-speed.jpg", "/benefit-eco.jpg", "/benefit-energy.jpg"];
+const PROCESS_IMAGES = [
+  "/process-planning.jpg",
+  "/process-prefab.jpg",
+  "/process-assembly.jpg",
+  "/process-finish.jpg",
+];
 
 const BENEFIT_ICONS: LucideIcon[] = [Zap, Leaf, Flame];
 const PROCESS_ICONS: LucideIcon[] = [PenTool, Factory, Blocks, Key];
@@ -189,6 +196,19 @@ export default function Home() {
               {t.tech.body}
             </p>
           </div>
+          <div className="mt-16 md:mt-24 relative aspect-[21/9] overflow-hidden bg-paper-3">
+            <Image
+              src="/tech.jpg"
+              alt={
+                locale === "pl"
+                  ? "Konstrukcja szkieletowa z drewna klejonego"
+                  : "Glulam timber frame construction"
+              }
+              fill
+              sizes="(max-width: 768px) 100vw, 1400px"
+              className="object-cover"
+            />
+          </div>
         </div>
       </section>
 
@@ -198,23 +218,29 @@ export default function Home() {
           <h2 className="font-display italic font-light text-[clamp(2.5rem,6vw,5.5rem)] leading-[0.94] tracking-[-0.02em] mt-12 max-w-4xl">
             {t.benefits.heading}
           </h2>
-          <div className="mt-20 md:mt-24 grid md:grid-cols-3">
+          <div className="mt-20 md:mt-24 grid md:grid-cols-3 gap-8 md:gap-10">
             {t.benefits.items.map((item, i) => {
               const Icon = BENEFIT_ICONS[i];
               return (
-                <div
-                  key={i}
-                  className={`py-10 md:py-0 md:px-10 first:md:pl-0 last:md:pr-0 ${
-                    i > 0 ? "border-t md:border-t-0 md:border-l border-rule" : ""
-                  }`}
-                >
-                  <Icon className="w-9 h-9 text-moss" strokeWidth={1.3} />
-                  <h3 className="font-display font-light text-2xl md:text-3xl mt-8 tracking-tight">
-                    {item.title}
-                  </h3>
-                  <p className="mt-4 text-base md:text-lg text-ink-2 leading-relaxed max-w-md">
-                    {item.body}
-                  </p>
+                <div key={i}>
+                  <div className="relative aspect-[4/3] overflow-hidden bg-paper-3">
+                    <Image
+                      src={BENEFIT_IMAGES[i]}
+                      alt={item.title}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 33vw"
+                      className="object-cover"
+                    />
+                  </div>
+                  <div className="mt-8">
+                    <Icon className="w-9 h-9 text-moss" strokeWidth={1.3} />
+                    <h3 className="font-display font-light text-2xl md:text-3xl mt-6 tracking-tight">
+                      {item.title}
+                    </h3>
+                    <p className="mt-4 text-base md:text-lg text-ink-2 leading-relaxed max-w-md">
+                      {item.body}
+                    </p>
+                  </div>
                 </div>
               );
             })}
@@ -254,6 +280,17 @@ export default function Home() {
             </nav>
 
             <div className="md:col-span-8 md:col-start-5">
+              <div className="relative aspect-[16/9] overflow-hidden bg-paper-3 mb-10">
+                <Image
+                  key={activeStep}
+                  src={PROCESS_IMAGES[activeStep]}
+                  alt={t.process.steps[activeStep].title}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 66vw"
+                  className="object-cover"
+                />
+              </div>
+
               <h3 className="font-display font-light text-[clamp(2rem,4vw,3.5rem)] leading-[1.05] tracking-[-0.02em]">
                 {t.process.steps[activeStep].headline}
               </h3>
